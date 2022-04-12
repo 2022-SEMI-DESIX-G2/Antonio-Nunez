@@ -1,0 +1,24 @@
+<script>
+function contarCaracteres(str) {
+    //Pasamos la cadena a minusculas(por si lo necesitas)
+    //str = str.toLowerCase()
+    //quitamos los espacios en blanco
+    str = str.replace(/\s/g, "");
+    final = {} //Donde guardamos los resultados
+    for(let t in str){ //Cogemos el indice de cada caracter
+      if(str[t] in final) { //Si ya existe, simplemente aumentamos el contador
+          final[str[t]] = final[str[t]] + 1
+      } else { // Si no existe, lo inicializamos a 1
+          final[str[t]] = 1
+      }
+  }
+    //Mostar los resultados
+    tmp = ``
+    Object.keys(final).forEach(function(letra){
+      tmp += `La cantidad de ${letra} es: ${final[letra]} \n`
+    })
+    return tmp
+  }
+  let para_contar = "HOLA hOLA" //Fijate en la h min.
+  console.log(contarCaracteres(para_contar))
+  </script>

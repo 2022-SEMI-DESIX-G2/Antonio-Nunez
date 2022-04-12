@@ -1,0 +1,23 @@
+<script>
+    function texto()
+    {
+        var t=prompt("Escribe una palabra").toLowerCase();
+     
+        // eliminamos los espacios en blanco
+        t=t.replace(/ /g, "");
+     
+        for (var i=0;i<t.length;i++){
+            if(t[i]!=t[t.length-i-1]){
+                return false;
+            }
+        }
+        return true;
+    }
+     
+    if(texto())
+    {
+        alert("Esto es palíndromo");
+    }else{
+        alert("Esto no es palíndromo")
+    }
+    </script>
