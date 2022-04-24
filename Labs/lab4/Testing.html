@@ -1,0 +1,90 @@
+<!doctype html>
+<HTML>
+  <HEAD>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <STYLE>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  height: 10%;
+  border-radius: 5px;
+  width: 5%;
+    position: relative;
+    position: fixed;
+    top: 15%;
+    left: 10%;
+    z-index: 1;
+  display: none;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+img {
+
+  border-radius: 5px 5px 0 0;
+  width: 90%;
+  height: 50%;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.container {
+  padding: 2px 16px;
+}
+  
+  </STYLE>
+
+  <TITLE>Secuencia Fibonaci</TITLE>
+  
+  <SCRIPT LANGUAGE="JavaScript">
+  function testResults (form) {
+      var Fnum = form.inputbox.value;
+
+      if(!Fnum.match(/^\d+/))
+        {
+          alert ("Escribiste: " + Fnum);
+        }
+        else{
+        alert ("Introduce un numero entero positivo")
+      }
+      }
+      
+      let n1 = 0, n2 = 1, nextTerm;
+
+for (let i = 1; i <= Fnum; i++) {
+console.log(n1);
+nextTerm = n1 + n2;
+n1 = n2;
+n2 = nextTerm;
+
+}
+  </SCRIPT>
+  </HEAD>
+  
+  <BODY>
+
+    <div class="card" id ="card">
+      <img id = "image" src="img_avatar.png" alt="Avatar">
+    
+      <div class="container" style="width:100%">
+        <h4><b></b></h4> 
+      </div>
+    </div>
+
+  <FORM NAME="myForm" ACTION="" METHOD="GET">Introduce Número<BR>
+  <INPUT TYPE="text" NAME="inputbox" VALUE="" ><P>
+  <INPUT TYPE="button" NAME="button" VALUE="Click" ID="btnID" onClick="testResults(this.form), show()">
+    <SCRIPT>
+      function show() {
+ 
+ /* Access image by id and change
+ the display property to block*/
+ document.getElementById('card')
+         .style.display = "block";
+}
+    </SCRIPT>
+  </FORM>
+  </BODY>
+  </HTML>
