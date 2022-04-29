@@ -17,9 +17,16 @@
             <label for="">Cantidad de elementos:</label>
             <input type="text" id="dato" size="10" value="">
             <p>
-                <button id="boton" onclick="validar(), show()">Calcular</button>
+                <button id="boton" onclick="validar(), document.getElementById('dato').value = '', addElement()">Calcular</button>
             </p>
+            <div id="resultado" onclick="limpiarResultado('resultado')">
+            
+        </div>
           
     </div>
 
-    </body>
+    <div id="div1"></div>
+
+
+
+ </body>
