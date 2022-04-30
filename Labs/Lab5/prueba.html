@@ -1,33 +1,23 @@
+<!DOCTYPE html>
+<html lang>
+    <head>
+        <title>Prueba</title>
 
-function validar (){
-    
+    </head>
+
+    <body>
+        <script>
+            function validar (){
     dato= document.getElementById("dato").value;
-    var img = document.createElement("img");
-    img.src = "img_avatar.png";
-    img.width = "100";
-    img.height ="100";
-    var div = document.getElementById("carta");
-    
-    let n1 = 0, n2 = 1, nextTerm;
-
-    for (let i = 1; i <= dato; i++) {
-
-nextTerm = n1 + n2;
-n1 = n2;
-n2 = nextTerm;
-var arreglo = new Array(dato).fill(n1);
-arrayLength = arreglo.length;
-    console.log(arreglo);
-
-    for (var c in arreglo) {
-        var newElement = document.createElement('div');
-        newElement.id = arreglo[c]; newElement.className = "carta";
-        newElement.innerHTML = arreglo[c];
-        document.body.appendChild(newElement);   
         
-    }
-
-
+    let n1 = 0, n2 = 1, nextTerm;
+    for (let i = 1; i <= dato; i++) {
+    console.log(n1);
+    nextTerm = n1 + n2;
+    n1 = n2;
+    n2 = nextTerm;
+    const arreglo = new Array(dato).fill(n1);
+    console.log(arreglo);
 
 }
     resultado = document.getElementById("resultado");
@@ -38,7 +28,7 @@ arrayLength = arreglo.length;
     }
     else{
         if (esNumero (dato)){
-           
+            
 
             resultado.innerText = ("La secuencia fibonacci del numero: " + parseInt(dato) +  "\nPresiona para limpiar");
         
@@ -77,5 +67,22 @@ function esNumero (dato){
 function limpiarResultado(elementID) {
     document.getElementById(elementID).innerHTML = "";
 }
+       
+        </script>
 
+<div id="contenedor">
+    <label for="">Cantidad de elementos:</label>
+    <input type="text" id="dato" size="10" value="">
+    <p>
+        <button id="boton" onclick="validar(), document.getElementById('dato').value = ''">Calcular</button>
+    </p>
+    <div id="resultado" onclick="limpiarResultado('resultado')">
+    
+</div>
   
+</div>
+
+    </body>
+
+
+</html>
