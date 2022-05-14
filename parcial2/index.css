@@ -9,6 +9,7 @@ input {
 }
 
 .poke-card {
+    
     position: relative;
     height: fit-content;
     font-family: 'Roboto Mono', monospace;
@@ -34,12 +35,44 @@ input {
     top: 10px;
     z-index: -1;
     border: 1px solid black;
+    
+}
+
+.poke-card-display {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    position: relative;
+    height: fit-content;
+    width: 40%;
+    font-family: 'Roboto Mono', monospace;
+    border-radius: 4px;
+    color: #000;
+    text-align: center;
+    padding: 10px;
+    margin: 0 auto;
+    background-color: rgb(228, 24, 24);
+    border: 1px solid black;
 }
 
 .img-container {
+    display: flex;
+    flex-direction: row;
     position: relative;
     width: 180px;
     margin: 10px auto;
+}
+
+.poke-container-right{
+    display: flex;
+    flex-direction: row;
+    
+
+}
+.poke-container-left{
+    display: flex;
+    flex-direction: column;
+
 }
 
 .poke-stats div {
@@ -73,6 +106,13 @@ input {
     background: radial-gradient(rgb(255, 255, 255) 10%, transparent 60%, rgb(255, 0, 0) 50%);
 }
 
+.poke-img-logo {
+    width: 180px;
+    border-radius: 50%;
+    background-size: 5px 5px;
+    background: radial-gradient(rgb(255, 255, 255) 10%, transparent 60%, rgb(255, 0, 0) 50%);
+}
+
 .btn-search {
     position: absolute;
     top:70%;
@@ -90,8 +130,8 @@ input {
 
 .btn-clear {
     position: absolute;
-    top:55%;
-    right:59%;
+    top:5%;
+    right:5%;
     background-color:#0885eb;
     color: #fff;
     border:none;
@@ -101,4 +141,14 @@ input {
   .btn-clear:hover {
     background-color:#002ead;
     transition: 0.7s;
+}
+
+.poke-finder{
+    position: absolute;
+    top: 70%;
+    right:5%;
+}
+
+form input[type="text"] {
+    text-transform: lowercase;
 }
