@@ -1,28 +1,69 @@
 ((Utils) => {
   const App = {
     htmlElements: {
+    
       pokemonFinderForm: document.querySelector("#pokemon-finder-form"),
-      pokemonFinderSearchType: document.querySelector(
-        "#pokemon-finder-search-type"
-      ),
+      pokemonFinderSearchType: document.querySelector("#pokemon-finder-search-type"),
       pokemonFinderInput: document.querySelector("#pokemon-finder-query"),
-      pokemonFinderOutput: document.querySelector("#pokemon-finder-response"),
+      pokemonFinderOutput: document.querySelector("#pokemon-finder-response"), 
     },
     init: () => {
       App.htmlElements.pokemonFinderForm.addEventListener(
         "submit",
-        App.handlers.pokemonFinderFormOnSubmit
+        App.handlers.pokemonFinderFormOnSubmit,
       );
+
     },
     handlers: {
+
       pokemonFinderFormOnSubmit: async (e) => {
         e.preventDefault();
+        
+        const query = App.htmlElements.pokemonFinderInput.value;
+        const searchType = App.htmlElements.pokemonFinderSearchType.value;
+        console.log({ searchType });
+        var response;
+        var renderedTemplate;
 
+        try {
+         
+          if(searchType === "pokemon"){
+            response = await Utils.getPokemon({
+            query,
+            searchType,
+          });
+
+            renderedTemplate = App.templates.render({
+            searchType,
+            response,
+          });
+        }
+        else{
+          response = await Utils.getAbility({
+            query,
+            searchType,
+          });
+
+            renderedTemplate = App.templates.render({
+            searchType,
+            response,
+          });
+
+         }
+   
+          App.htmlElements.pokemonFinderOutput.innerHTML = renderedTemplate;
+        } catch (error) {
+          App.htmlElements.pokemonFinderOutput.innerHTML = `<h1>${error}</h1>`;
+        }
+      },
+
+     /* abilityFinderFormOnSubmit: async (e) => {
+        e.preventDefault();
         const query = App.htmlElements.pokemonFinderInput.value;
         const searchType = App.htmlElements.pokemonFinderSearchType.value;
         console.log({ searchType });
         try {
-          const response = await Utils.getPokemon({
+          const response = await Utils.getAbility({
             query,
             searchType,
           });
@@ -30,15 +71,15 @@
             searchType,
             response,
           });
+          
+          
           App.htmlElements.pokemonFinderOutput.innerHTML = renderedTemplate;
         } catch (error) {
           App.htmlElements.pokemonFinderOutput.innerHTML = `<h1>${error}</h1>`;
         }
-      },
-      
-
+      },*/
     },
-    
+   
     templates: {
       render: ({ searchType, response }) => {
         const renderMap = {

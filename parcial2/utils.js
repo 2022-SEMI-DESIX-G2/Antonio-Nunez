@@ -6,6 +6,7 @@
     getFormattedBackendUrl: ({ query, searchType }) => {
       return `${Utils.settings.backendBaseUrl}/${searchType}/${query}`;
     },
+    
     getPokemon: async ({ query, searchType = "pokemon" }) => {
       const pokemon = await Utils.fetch({
         url: Utils.getFormattedBackendUrl({ query, searchType }),
@@ -18,8 +19,9 @@
       });
       pokemon.evolutionChain = evolutionChain;
       return pokemon;
-    },
+    }, 
     getSpecies: async (url, searchType = "pokemon-species") => {
+      
       return await Utils.fetch({ url, searchType });
     },
     getEvolutionChain: async ({ url, searchType = "evolution-chain" }) => {
@@ -42,6 +44,15 @@
 
       return evolutions;
     },
+
+    getAbility: async ({ query, searchType = "ability" }) => {
+      const ability = await Utils.fetch({
+        url: Utils.getFormattedBackendUrl({ query, searchType }),
+        searchType,
+      });
+      return ability;
+    },
+
     fetch: async ({ url, searchType }) => {
       try {
         const rawResponse = await fetch(url);
@@ -52,6 +63,7 @@
       } catch (error) {
         throw error;
       }
+
     },
   };
   document.Utils = Utils;
