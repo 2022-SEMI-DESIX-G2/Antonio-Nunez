@@ -1,7 +1,8 @@
 const { get } = require("express/lib/response");
 
 function getPokemon() {
-fetch("https://pokeapi.co/api/v2/pokemon/ditto")
+   
+fetch("https://pokeapi.co/api/v2/pokemon/bulbasaur", )
 .then(function(response) {
     response.json()
         .then(function(pokemon){
@@ -11,40 +12,42 @@ fetch("https://pokeapi.co/api/v2/pokemon/ditto")
         console.log(pokemon.height);
         console.log(pokemon.abilities[0].ability.name);
         console.log(pokemon.abilities[1]?.ability.name);
-
+       
     })
 })
 } 
 
-function getSpecies() {
-    fetch("https://pokeapi.co/api/v2/pokemon-species/ditto")
+
+/*function getEvolution() {
+
+    fetch("https://pokeapi.co/api/v2/evolution-chain/1/")
 .then(function(response) {
     response.json()
+        .then(function(evoChain){
 
-    .then(function(species){
-        var evoChain = [];
-        var evoData = species.data.chain;
-        
-        do {
-          var evoDetails = evoData['evolution_details'][0];
-        
-          evoChain.push({
-            "species_name": evoData.species.name,
-            "min_level": !evoDetails ? 1 : evoDetails.min_level,
-            "trigger_name": !evoDetails ? null : evoDetails.trigger.name,
-            "item": !evoDetails ? null : evoDetails.item
-          });
-        
-          evoData = evoData['evolves_to'][0];
-        } while (!!evoData && evoData.hasOwnProperty('evolves_to'));
+            let evoChain = [];
+
+            function getEvo(arr) {
+              if (arr[0].evolves_to.length > 0) {
+                evoChain.push(arr[0].species.name);
+                getEvo(arr[0].evolves_to);
+              } else {
+                evoChain.push(arr[0].species.name);
+                return 0;
+              }
+            }
+            getEvo([data.chain]);
     
-    })
-   
-    return evoChain;
 
-    }) 
-}
+    })
+})
+    
+}*/
  
 
 getPokemon();
-getSpecies();
+//getEvolution();
+
+
+
+
