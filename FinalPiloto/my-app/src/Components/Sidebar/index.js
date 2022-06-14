@@ -1,6 +1,6 @@
-import React from "react";
-import { iconOptions } from "./iconOptions" 
+import React from 'react';
 import { Container } from "./styles";
+import { IconOptions } from "./IconOptions";
 import TwitterIcon from '@mui/icons-material/Twitter';
 import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';
@@ -10,29 +10,26 @@ import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import { Button } from '@mui/material'; 
 
- 
 
-export const Sidebar = () => {
+const Sidebar = () => {
   return (
-        <Container>
-          <TwitterIcon/>
-          <iconOptions text="Home"  />
-           {/*iconOptions*/}
-            {/*iconOptions*/}
-             {/*iconOptions*/}
-              {/*iconOptions*/}
-               {/*iconOptions*/}
-                {/*iconOptions*/}
-                 {/*iconOptions*/}
+    <Container>
+      <TwitterIcon className="twitter-logo"/>
+      <IconOptions active Icon = {HomeIcon} text ="Home"/>
+      <IconOptions Icon = {SearchIcon} text ="Search"/>
+      <IconOptions Icon = {NotificationsNoneIcon} text ="Notifications"/>
+      <IconOptions Icon = {MailOutlineIcon} text ="Inbox"/>
+      <IconOptions Icon = {BookmarkBorderIcon} text ="Bookmarks"/>
+      <IconOptions Icon = {ListAltIcon} text ="List"/>
+      <IconOptions Icon = {PermIdentityIcon} text ="Profile"/>
+      <IconOptions Icon = {MoreHorizIcon} text ="More"/>
 
-          <iconOptions/>
-
-          
-        </Container>
-    
+      <Button variant="outlined" fullWidth>Tweet</Button>
+     
+    </Container> 
   )
 }
 
-
-
+export default Sidebar

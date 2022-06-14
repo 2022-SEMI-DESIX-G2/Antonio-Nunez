@@ -1,12 +1,12 @@
 import React from "react";
-import { sidebarIcons } from "./styles";
+import { SidebarIcons } from "./styles";
 
-export const iconOptions = ({text, Icon}) => {
+export const IconOptions = ({text, Icon, active}) => {
   return (
-    <sidebarIcons>
+    <SidebarIcons active = {active} >
       <Icon/>
         <h2>{text}</h2>
-    </sidebarIcons>
+    </SidebarIcons>
         
   )
 }

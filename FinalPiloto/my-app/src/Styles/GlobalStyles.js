@@ -2,8 +2,15 @@ import {createGlobalStyle} from 'styled-components'
 
 export default createGlobalStyle`
 
-{
-    margin: 0;
+:root{
+  --twitterColor: #1da1f2;
+  --twitterHover: #1a91da;
+  --Hover: rgba(24, 161, 242, .1)
+}
+
+*{
+  margin: 0;
+
 }
 
 body {
@@ -20,10 +27,12 @@ body {
       monospace;
   }
 
-  .App{
-      display: flex;
-      height: 100vh;
-      max-width: 1250px;
+  .App {
+    display: flex;
+    height: 100vh;
+    max-wight: 1250px;
+    margin: 0 auto;
+    border: 1px solid red;
   }
   
 `

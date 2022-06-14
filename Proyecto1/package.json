@@ -1,0 +1,11 @@
+{
+  "name": "proyecto1",
+  "version": "1.0.0",
+  "description": "Poryecto pokemon api",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Antonio Nunez",
+  "license": "ISC"
+}

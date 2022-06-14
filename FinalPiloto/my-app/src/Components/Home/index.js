@@ -1,12 +1,15 @@
 import React from 'react'
+import {Container, Header} from './styles'
 
 
-export const Home= () => {
+export const Home = () => {
   return (
-    <div>
+    <Container>
+
+      <Header><h2>Home</h2></Header>
         <h1>Home</h1>
         
-    </div>
+    </Container>
   )
 }
 
