@@ -8,12 +8,38 @@ input {
     padding: 10px;
 }
 
+header { 
+    background-color: rgb(24, 99, 228);
+
+}
+
+nav{ 
+    background: lightskyblue; 
+}
+nav ul li{
+    float: left;
+    list-style-type: none;
+    
+}
+
+#content{
+    float: left;
+    width: 100%;
+}
+
+aside{
+    position: center;
+    float: left;
+    width: 30%;
+   
+}
+
 .poke-card {
     
     position: relative;
     height: fit-content;
     font-family: 'Roboto Mono', monospace;
-    max-width: 300px;
+    width: 300px;
     border-radius: 4px;
     color: #000;
     text-align: center;
@@ -115,8 +141,9 @@ input {
 
 .btn-search {
     position: absolute;
-    top:70%;
-    right:70%;
+    top:88%;
+    right: 10%;
+    
     background-color:#0885eb;
     color: #fff;
     border:none;
@@ -129,9 +156,6 @@ input {
 }
 
 .btn-clear {
-    position: absolute;
-    top:5%;
-    right:5%;
     background-color:#0885eb;
     color: #fff;
     border:none;
