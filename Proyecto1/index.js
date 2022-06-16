@@ -1,4 +1,28 @@
-((Utils) => {
+
+//Importa paquete express
+const express = require('express')
+//invoca a funcion express, crea servidor express
+const app = express()
+//almacena puerto donde corre
+const port = 3000
+
+app.get('/pokemon/ditto', (req, res) => {
+  res.send('Hello World!')
+})
+//pone a correr la app en el puerto 3000
+
+
+app.listen(port, () => {
+  console.log(req);
+  const pokemon = {
+
+
+  };
+  res.send(pokemon)
+})
+
+
+/*((Utils) => {
   const App = {
     htmlElements: {
     
@@ -57,27 +81,6 @@
         }
       },
 
-     /* abilityFinderFormOnSubmit: async (e) => {
-        e.preventDefault();
-        const query = App.htmlElements.pokemonFinderInput.value;
-        const searchType = App.htmlElements.pokemonFinderSearchType.value;
-        console.log({ searchType });
-        try {
-          const response = await Utils.getAbility({
-            query,
-            searchType,
-          });
-          const renderedTemplate = App.templates.render({
-            searchType,
-            response,
-          });
-          
-          
-          App.htmlElements.pokemonFinderOutput.innerHTML = renderedTemplate;
-        } catch (error) {
-          App.htmlElements.pokemonFinderOutput.innerHTML = `<h1>${error}</h1>`;
-        }
-      },*/
     },
    
     templates: {
@@ -127,4 +130,4 @@
     },
   };
   App.init();
-})(document.Utils);
+})(document.Utils);*/
