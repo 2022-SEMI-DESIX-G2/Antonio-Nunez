@@ -1,31 +1,9 @@
-
-//Importa paquete express
-const express = require('express')
-//invoca a funcion express, crea servidor express
-const app = express()
-//almacena puerto donde corre
-const port = 3000
-
-app.get('/pokemon/ditto', (req, res) => {
-  res.send('Hello World!')
-})
-//pone a correr la app en el puerto 3000
-
-
-app.listen(port, () => {
-  console.log(req);
-  const pokemon = {
-
-
-  };
-  res.send(pokemon)
-})
-
-
-/*((Utils) => {
+(() => {
   const App = {
+    config: {
+      getFormattedBackendUrl: "http://localhost:3000/pokemon",
+    },
     htmlElements: {
-    
       pokemonFinderForm: document.querySelector("#pokemon-finder-form"),
       pokemonFinderSearchType: document.querySelector("#pokemon-finder-search-type"),
       pokemonFinderInput: document.querySelector("#pokemon-finder-query"),
@@ -36,16 +14,17 @@ app.listen(port, () => {
         "submit",
         App.handlers.pokemonFinderFormOnSubmit,
       );
-
     },
     handlers: {
-
       pokemonFinderFormOnSubmit: async (e) => {
         e.preventDefault();
-        
         const query = App.htmlElements.pokemonFinderInput.value;
         const searchType = App.htmlElements.pokemonFinderSearchType.value;
-        console.log({ searchType });
+        const pokemon = App.htmlElements.pokemonFinderInput.value;
+        const url = App.utils.getUrl({ pokemon });
+        console.log({ url });
+        const { data } = await axios.post(url);
+        console.log({ data });
         var response;
         var renderedTemplate;
 
@@ -79,14 +58,80 @@ app.listen(port, () => {
         } catch (error) {
           App.htmlElements.pokemonFinderOutput.innerHTML = `<h1>${error}</h1>`;
         }
-      },
-
+      },    
     },
-   
+
+    utils: {
+     /* getUrl: ({ pokemon }) => {
+        return `${App.config.getFormattedBackendUrl}/${pokemon}`;
+      },*/
+
+      getFormattedBackendUrl: ({ query, searchType }) => {
+        return `${Utils.settings.backendBaseUrl}/${searchType}/${query}`;
+      },
+      getPokemon: async ({ query, searchType = "pokemon" }) => {
+        const pokemon = await Utils.fetch({
+          url: Utils.getFormattedBackendUrl({ query, searchType }),
+          searchType,
+        });
+        const species = await Utils.getSpecies(pokemon.species.url);
+        const evolutionChain = await Utils.getEvolutionChain({
+          url: species.evolution_chain.url,
+          query: pokemon.order,
+        });
+        pokemon.evolutionChain = evolutionChain;
+        return pokemon;
+      }, 
+      getSpecies: async (url, searchType = "pokemon-species") => {
+        
+        return await Utils.fetch({ url, searchType });
+      },
+      getEvolutionChain: async ({ url, searchType = "evolution-chain" }) => {
+        return await Utils.fetch({
+          url,
+          searchType,
+        });
+      },
+      getEvolutionsFromEvolutionChain: (evolutionChain) => {
+        const evolutions = [];
+        const getEvolutionsRecursive = (evolutionNext) => {
+          evolutions.push(evolutionNext.species.name);
+          if (evolutionNext.evolves_to[0]) {
+            getEvolutionsRecursive(evolutionNext.evolves_to[0]);
+          }
+        };
+        if (evolutionChain.chain) {
+          getEvolutionsRecursive(evolutionChain.chain);
+        }
+  
+        return evolutions;
+      },
+  
+      getAbility: async ({ query, searchType = "ability" }) => {
+        const ability = await Utils.fetch({
+          url: Utils.getFormattedBackendUrl({ query, searchType }),
+          searchType,
+        });
+        return ability;
+      },
+  
+      fetch: async ({ url, searchType }) => {
+        try {
+          const rawResponse = await fetch(url);
+          if (rawResponse.status !== 200) {
+            throw new Error(`${searchType} not found`);
+          }
+          return rawResponse.json();
+        } catch (error) {
+          throw error;
+        }
+  
+      },
+    },
+
     templates: {
       render: ({ searchType, response }) => {
-        const renderMap = {
-          ability: App.templates.abilityCard,
+        const renderMap = { 
           pokemon: App.templates.pokemonCard,
         };
         return renderMap[searchType]
@@ -115,19 +160,8 @@ app.listen(port, () => {
         
         <button class="btn-clear" onclick="history.go(0);">Clear</button> 
         </div>`;
-    
       },
-
-      abilityCard: ({ id, name, pokemon }) => {
-        const pokemonList = pokemon.map(
-          ({ pokemon, is_hidden }) =>
-            `<div class="poke-card"><li>${pokemon.name}${
-              is_hidden ? " (Hidden)" : ""
-            }</li></div>`
-        );
-        return `<h1><div class="poke-types">${name} (${id})</div></h1><ul>${pokemonList.join("")}</ul>`;
-      },
-    },
+    },  
   };
   App.init();
-})(document.Utils);*/
+})();

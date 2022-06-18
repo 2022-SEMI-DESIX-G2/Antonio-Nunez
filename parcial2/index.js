@@ -56,28 +56,6 @@
           App.htmlElements.pokemonFinderOutput.innerHTML = `<h1>${error}</h1>`;
         }
       },
-
-     /* abilityFinderFormOnSubmit: async (e) => {
-        e.preventDefault();
-        const query = App.htmlElements.pokemonFinderInput.value;
-        const searchType = App.htmlElements.pokemonFinderSearchType.value;
-        console.log({ searchType });
-        try {
-          const response = await Utils.getAbility({
-            query,
-            searchType,
-          });
-          const renderedTemplate = App.templates.render({
-            searchType,
-            response,
-          });
-          
-          
-          App.htmlElements.pokemonFinderOutput.innerHTML = renderedTemplate;
-        } catch (error) {
-          App.htmlElements.pokemonFinderOutput.innerHTML = `<h1>${error}</h1>`;
-        }
-      },*/
     },
    
     templates: {
