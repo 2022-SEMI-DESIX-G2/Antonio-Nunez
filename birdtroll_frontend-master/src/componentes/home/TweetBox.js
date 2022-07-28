@@ -10,11 +10,11 @@ import axios from "axios";
 import User from "../../img/usuario.png";
 
 export const TweetBox = () => {
+  const [userContext, setUserContext] = useContext(UserContext);
   const [images, setImages] = useState("");
   const [tweetImg, setTweetimg] = useState("");
   const [usuario, setUsuario] = useState("");
   const [tweetMsg, settweetMsg] = useState("");
-  const [userContext, setUserContext] = useContext(UserContext);
 
   const URI = process.env.URI || "http://localhost:4000/";
   const URIIMAGE_POST =
@@ -51,17 +51,6 @@ export const TweetBox = () => {
       }
     });
   }, [setUserContext, userContext.token]);
-
-  useEffect(() => {
-    localStorage.setItem("Perfil", JSON.stringify(images));
-  }, [images]);
-
-  useEffect(() => {
-    // fetch only when user details are not present
-    if (!userContext.details) {
-      fetchUserDetails();
-    }
-  }, [userContext.details, fetchUserDetails]);
 
   const refetchHandler = () => {
     // set details to undefined so that spinner will be displayed and
@@ -103,6 +92,7 @@ export const TweetBox = () => {
       setTweetimg("");
       settweetMsg("");
       setUsuario("");
+      window.location.reload();
     }
   };
 
@@ -117,7 +107,7 @@ export const TweetBox = () => {
       .catch((error) => {
         console.log(error.toJSON());
       });
-    setImages(`${URIIMAGE_PROFILE}/${data.name}`);
+    setImages(`${data.name}`);
   };
 
   const handlePost = async (e) => {
@@ -134,13 +124,20 @@ export const TweetBox = () => {
     setTweetimg(`${URIIMAGE_POST}/${data.name}`);
   };
 
+  useEffect(() => {
+    // fetch only when user details are not present
+    if (!userContext.details) {
+      fetchUserDetails();
+    }
+  }, [userContext.details, fetchUserDetails]);
+
   return !userContext.details ? (
     <Loader />
   ) : (
     <Tweetbox>
       <Form>
         <Div>
-          <Avatar src={images ? images : User} />
+          <Avatar src={userContext.details.profileImage ? userContext.details.profileImage : User} />
 
           <File type="file" onChange={handleSubir} />
           <div className="columns">

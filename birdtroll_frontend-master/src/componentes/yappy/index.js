@@ -62,11 +62,8 @@ export const Yappy = () => {
   const onFindUrl = async () => {
     console.log(userContext.details._id);
     const { data } = await axios.post(`${URI}api/pagosbg`, { id: userContext.details._id});
-    console.log(data.url);
     setUrl(data.url);
-    setUserContext((oldValues) => {
-      return { ...oldValues, premiun: true };
-    });
+    fetchUserDetails();
   };
 
   return !userContext.details ? (
