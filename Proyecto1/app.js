@@ -12,10 +12,8 @@ app.use(bodyParser.json());
 /*var bodyParser = require('body-parser');
 app.use(bodyParser.json());*/
 
-
-
-
 const PORT = process.env.PORT || 3000;
+const time = 5000;
 
 const CACHE = {};
 
@@ -29,13 +27,13 @@ app.get("/cache", async function (req, res) {
   res.json({ data: CACHE });
 });
 
-app.post("/pokemon", async function (req, res) {
+app.post("/pokemon/", async function (req, res) {
   var pokeball = req.body.pokemon;
   console.log(req.body.pokemon);
   const  name  = pokeball;
  
   if (CACHE[name]) {
-    return res.json({ data: CACHE[name], isCached: true });
+    return res.json({ data: CACHE[name].App.handlers.pokemonFinderFormOnSubmit, isCached: true });
     
 
   }
@@ -43,10 +41,6 @@ app.post("/pokemon", async function (req, res) {
   try {
     const { data } = await axios.get(
       `https://pokeapi.co/api/v2/pokemon/${name}`,
-
-      
-      
-      
     );
     responseData = data;
   } catch (error) {

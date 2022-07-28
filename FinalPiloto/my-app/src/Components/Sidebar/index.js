@@ -21,10 +21,10 @@ const Sidebar = () => {
       <IconOptions Icon = {SearchIcon} text ="Search"/>
       <IconOptions Icon = {NotificationsNoneIcon} text ="Notifications"/>
       <IconOptions Icon = {MailOutlineIcon} text ="Inbox"/>
-      <IconOptions Icon = {BookmarkBorderIcon} text ="Bookmarks"/>
-      <IconOptions Icon = {ListAltIcon} text ="List"/>
-      <IconOptions Icon = {PermIdentityIcon} text ="Profile"/>
-      <IconOptions Icon = {MoreHorizIcon} text ="More"/>
+      <IconOptions primary Icon = {BookmarkBorderIcon} text ="Bookmarks"/>
+      <IconOptions primary Icon = {ListAltIcon} text ="List"/>
+      <IconOptions primary Icon = {PermIdentityIcon} text ="Profile"/>
+      <IconOptions primary Icon = {MoreHorizIcon} text ="More"/>
 
       <Button variant="outlined" fullWidth>Tweet</Button>
      
