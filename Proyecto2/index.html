@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link href="index.css" rel="stylesheet" />
+    <title>Parcial 2</title>
+</head>
+<body>
+    <section>
+        <form class="pokemon-finder-form" id="pokemon-finder-form">
+          
+            <div class="poke-card">
+                <div class="poke-types"><label for="">Pokemon searcher</label></div>
+               
+
+                <label>Search by Pokemon name, number or ability</label>
+            <img data-poke-img class="poke-img-logo" src="pokeapi.png"/>
+            <select class="poke-finder" id="pokemon-finder-search-type">
+                <option value="pokemon">pokemon</option>
+                <option value="ability">ability</option>
+            </select>
+    
+            <input id="pokemon-finder-query" type="text" autocomplete="off" placeholder="Name">
+            <button class="btn-search" type="submit">Search</button>
+            </div>
+        </form>
+    </section>
+    <section id="pokemon-finder-response"></section>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="utils.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

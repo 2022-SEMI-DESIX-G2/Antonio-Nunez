@@ -2,6 +2,8 @@
   const App = {
     config: {
       getFormattedBackendUrl: "http://localhost:3000/pokemon",
+      baseApiUrlUbica: "http://localhost:3000/encounters",
+     
     },
     htmlElements: {
       pokemonFinderForm: document.querySelector("#pokemon-finder-form"),
@@ -36,7 +38,7 @@
             searchType,
           });
 
-            renderedTemplate = App.templates.render({
+            renderedTemplate = await App.templates.render({
             searchType,
             response,
           });
@@ -47,7 +49,7 @@
             searchType,
           });
 
-            renderedTemplate = App.templates.render({
+            renderedTemplate = await App.templates.render({
             searchType,
             response,
           });
@@ -62,10 +64,7 @@
     },
 
     utils: {
-     /* getUrl: ({ pokemon }) => {
-        return `${App.config.getFormattedBackendUrl}/${pokemon}`;
-      },*/
-
+  
       getFormattedBackendUrl: ({ query, searchType }) => {
         return `${Utils.settings.backendBaseUrl}/${searchType}/${query}`;
       },
@@ -127,10 +126,17 @@
         }
   
       },
+
+      getLocation: () => {
+        return `${App.config.baseApiUrlUbica}`;
+      },
+
+
+
     },
 
     templates: {
-      render: ({ searchType, response }) => {
+      render: async ({ searchType, response }) => {
         const renderMap = { 
           pokemon: App.templates.pokemonCard,
         };
@@ -141,7 +147,7 @@
       errorCard: () => `<h1>There was an error</h1>`,
 
     
-      pokemonCard: ({ id, sprites, types, name, weight, height, abilities, species, evolutionChain}) => {
+      pokemonCard: ({ id, sprites, types, name, weight, height, abilities, evolutionChain}) => {
         const evolutions = Utils.getEvolutionsFromEvolutionChain(evolutionChain);
         return `<div class="poke-card-display">
         <div class= "poke-container-left">

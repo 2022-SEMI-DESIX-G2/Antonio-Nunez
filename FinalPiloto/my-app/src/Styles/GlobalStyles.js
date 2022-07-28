@@ -32,7 +32,7 @@ body {
     height: 100vh;
     max-wight: 1250px;
     margin: 0 auto;
-    border: 1px solid red;
+    
   }
   
 `
