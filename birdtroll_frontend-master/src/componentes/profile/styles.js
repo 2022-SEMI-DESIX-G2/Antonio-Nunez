@@ -115,6 +115,17 @@ export const Div = styled.div`
  }
 `;
 
+export const File = styled.input`
+max-width: 35px;
+position: absolute;
+z-index: 10;
+padding-top: 10px;
+opacity: .0;
+${props => props.primary && css`
+margin-left: 55px;
+`};
+`;
+
 export const DivBox = styled.div`
   display: flex;
   justify-content: space-around;
@@ -132,16 +143,6 @@ export const DivBox = styled.div`
   }
 `;
 
-export const File = styled.input`
-max-width: 35px;
-position: absolute;
-z-index: 10;
-padding-top: 10px;
-opacity: .0;
-${props => props.primary && css`
-margin-left: 55px;
-`};
-`
 /*****************POST**************/
 export const Avatar = styled.img`
   border-radius: 50%;

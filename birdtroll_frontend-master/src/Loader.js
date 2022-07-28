@@ -1,10 +1,11 @@
 import { Spinner } from "@blueprintjs/core"
 import React from "react"
+import TwitterGif from "./img/twitter-logo.gif"
 
 const Loader = () => {
   return (
     <div className="loader">
-      <Spinner size={50} />
+      <img src={TwitterGif} />
     </div>
   )
 }

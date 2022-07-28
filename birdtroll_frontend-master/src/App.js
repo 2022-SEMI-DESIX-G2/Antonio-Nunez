@@ -10,7 +10,6 @@ import { Register } from "./componentes/register";
 import {Profile} from "./componentes/profile";
 import {Yappy} from "./componentes/yappy";
 import Loader from "./Loader"
-import styled, {css} from "styled-components";
 import {
   Routes,
   Route,
@@ -66,6 +65,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/yappy" element={<Yappy />} />
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
     <Widgets />
     <GlobalStyles /> 

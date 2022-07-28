@@ -27,8 +27,9 @@ export const Sidebar = () => {
   };
 
   const logoutHandler = () => {
-    fetch(URI + "users/logout", {
+    fetch(URI + "auth/logout", {
       credentials: "include",
+      method: 'DELETE',
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${userContext.token}`,
