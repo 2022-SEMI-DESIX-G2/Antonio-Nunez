@@ -64,6 +64,7 @@ font-family: 'Nunito', sans-serif;
 font-size: 22px;
 padding: 0.25rem;
 border-radius: 0.5rem;
+width: 420px;
 }
 
 label,

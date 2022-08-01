@@ -118,6 +118,7 @@ export const Posts = ({
         <div className="post-more">
           {" "}
           <br />
+          <Stack direction="row" spacing={2}>
           <MoreHorizIcon fontSize="small" onClick={() => optionTogle(isOpen)} />
           {isOpen ? (
             <Stack direction="row" spacing={2}>
@@ -136,10 +137,12 @@ export const Posts = ({
                 Borrar
               </Button>
             </Stack>
+            
           ) : (
             ""
-          )}
+          )}</Stack>
         </div>
+        
         <div className="post-more">
           {isEdit ? (
             <Stack direction="row" spacing={2}>
@@ -181,7 +184,9 @@ export const Posts = ({
                     textPost
                   )}
                 </p>
+                
               </PostDescription>
+              
             </div>
             <Images src={imagePost} />
             <PostFooter>
